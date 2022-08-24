@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html xmlns:xmls="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml"
+      xmls:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--创建注册界面-->
+<form action="/user/register" method="get">
+    登录名:<input id="loginName" name="loginName" type="text" value=""/><br>
+    密码:<input id="password" name="password" type="password" value=""/><br>
+   姓名:<input id="username" name="name" type="text" value=""/><br>
+    年龄:<input id="age"  name="age" type="text" value=""/><br>
+    性别:<input id="sex"  name="sex" type="text" value=""/><br>
+    邮箱:<input id="email" name="mail" type="email" value=""/><br>
+    电话:<input id="phone" name="phone" type="tel" value=""/><br>
+
+    <input  type="submit" value="注册">
+    <input type="reset" value="重置">
+</form>
+
+</body>
+</html>

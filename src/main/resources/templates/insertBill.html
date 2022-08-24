@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:xmls="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml"
+      xmls:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <!--    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"/>-->
+</head>
+<body>
+<h4>跳转到insertBill</h4>
+
+
+<!--创建登录界面-->
+<form action="/bill/insertBill" method="post">
+    类别:<input id="one" name="what" type="radio" value="收入"/>收入
+    <input id="two" name="what" type="radio" value="支出"/>支出<br>
+    金额:<input id="money" name="money" type="text" value=""/><br>
+    消费日期:<input id="datetime" name="datetime" type="date" value=""/><br>
+    花销分类：<select name="cid">
+    <option value="超市">超市</option>
+    <option value="交通">交通</option>
+    <option value="房租">房租</option>
+    <option value="等等等等">等等等等</option>
+</select><br>
+<!--    <input id="cid" name="cid" type="" value=""/><br>-->
+    备注:<input id="remark" name="remark" type="text" value=""/><br>
+    用户id:"<input id="id" name="id" type="text" value=""/><br>
+    <input type="submit" value="提交">
+    <input type="reset" value="重置">
+</form>
+
+
+
+</body>

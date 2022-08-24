@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ykx.ykxfmis.dao.UserDao">
+    <resultMap id="UserMap" type="com.ykx.ykxfmis.entity.User">
+        <id property="id" column="u_id"></id>
+        <result property="name" column="u_name"></result>
+        <result property="age" column="u_age"></result>
+        <result property="sex" column="u_sex"></result>
+        <result property="mail" column="u_mail"></result>
+        <result property="password" column="u_password"></result>
+        <result property="phone" column="u_phone"></result>
+        <result property="loginName" column="u_loginname"></result>
+
+    </resultMap>
+    <!--    一对多查询-->
+    <resultMap id="UserWithBillResult" type="com.ykx.ykxfmis.entity.User">
+        <!--        user属性-->
+        <id property="id" column="u_id"></id>
+        <result property="name" column="u_name"></result>
+        <result property="loginName" column="u_loginname"></result>
+        <!--        多条数据的bill属性-->
+        <collection property="billList" ofType="com.ykx.ykxfmis.entity.Bill">
+            <id property="id" column="b_id"></id>
+            <result property="money" column="b_money"></result>
+            <result property="datetime" column="b_date"></result>
+            <result property="remark" column="b_remark"></result>
+        </collection>
+    </resultMap>
+
+    <select id="findUserById" parameterType="Integer" resultMap="UserMap">
+        select * from t_user
+        <where>
+            u_id=#{id}
+        </where>
+    </select>
+    <select id="findUserByIdAndName" parameterType="String" resultMap="UserMap">
+        select * from t_user
+        <where>
+            u_id=#{id} and u_name=#{name}
+        </where>
+    </select>
+    <select id="findUserByLoginNameAndPassword" parameterType="String" resultMap="UserMap">
+        select * from t_user
+        <where>
+            u_loginname=#{loginName} and u_password=#{password}
+        </where>
+    </select>
+    <select id="findUserByLoginName" parameterType="String" resultMap="UserMap">
+        select * from t_user
+        <where>
+            u_loginname=#{loginName}
+        </where>
+    </select>
+
+    <select id="findBillWithUser" parameterType="Integer" resultMap="UserWithBillResult">
+        select * from t_user u,t_bill b
+        <where>
+            u.u_id=b.u_id and u.u_id=#{id}
+        </where>
+    </select>
+    <delete id="createUser" parameterType="Integer">
+        delete from t_user
+        <where>
+            u_loginname=#{loginName} and u_password=#{password}
+        </where>
+    </delete>
+
+
+    <insert id="insertUser" parameterType="com.ykx.ykxfmis.entity.User" useGeneratedKeys="true">
+        insert into t_user(u_name,u_age,u_sex,u_mail,u_password,u_phone,u_loginname) values (#{name},#{age},#{sex},#{mail},#{password},#{phone},#{loginName})
+    </insert>
+
+
+</mapper>

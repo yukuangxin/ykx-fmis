@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:xmls="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml"
+      xmls:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+<!--    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"/>-->
+</head>
+<body>
+<h4>跳转到login.html</h4>
+
+
+<!--创建登录界面-->
+<form action="/user/login" method="post">
+    username:<input id="username" name="loginName" type="text" value="yu"/><br>
+    password"<input id="password" name="password" type="password" value="111111"/><br>
+    <input  type="submit" value="提交">
+    <input type="reset" value="重置">
+</form>
+<form action="/user/show2" method="post">
+
+    <input  type="submit" value="没有账号？请注册">
+
+</form>
+
+
+
+</body>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:xmls="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml"
+      xmls:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="/user/show1" method="post">
+    <input id="1" type="submit" value="请先登录">
+
+</form>
+<form action="/user/show2" method="post">
+    <input id="2"  type="submit" value="请先注册">
+</form>
+<!--<form action="/user/show">-->
+<!--    <input name="id" type="submit" value="请先注册">-->
+<!--</form>-->
+
+<!--<div>
+    <form action="${pageContext.request.contextPath}/show" method="post">
+        <input type="button" value="注册"/>
+    </form>
+    <form>
+        <input type="button" value="登录"/>
+    </form>
+    <form>
+        <input type="button" value="注销"/>
+    </form>
+</div>-->
+<!--<table>-->
+<!--    <tr>-->
+<!--        <td>id</td>-->
+<!--        <td>name</td>-->
+<!--        <td>age</td>-->
+
+<!--    </tr>-->
+<!--    <tr th:each="user:${list}">-->
+<!--        <td th:text="${user.id}"></td>-->
+<!--        <td th:text="${user.name}"></td>-->
+<!--        <td th:text="${user.age}"></td>-->
+<!--    </tr>-->
+<!--    <tr th:href="login.html">去往登录界面</tr>-->
+<!--</table>-->
+
+</body>
+</html>

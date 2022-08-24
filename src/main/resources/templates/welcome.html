@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmls:th="http://www.thymeleaf.org" xmlns:xmls="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+
+  <h4>welcome</h4>
+
+
+    <!--创建业务界面-->
+    <form action="/user/showAll" method="post" >
+       id:<input id="id" name="id" type="text" th:value="${session.id}"><br/>
+        <input  type="submit" value="查询明细">
+    </form>
+</div>
+<div>
+    <form action="/user/show3" method="post" >
+
+        <input  type="submit" value="开始记账">
+    </form>
+
+</div>
+<br>
+<br>
+<br>
+<br>
+
+<h4>==================================================================================</h4>
+<div>
+<table>
+    <tr>
+        <td>id</td>
+        <td>登录名</td>
+        <td>用户名</td>
+    </tr>
+    <tr >
+        <td th:text="${session.id}"></td>
+        <td th:text="${session.loginName}"></td>
+        <td th:text="${session.name}"></td>
+
+    </tr>
+</table>
+    <h4>================================================================================== </h4>
+<table>
+    <tr>
+        <td>金额</td>
+        <td>消费时间</td>
+        <td>备注</td>
+        <td>消费类别</td>
+
+    </tr>
+    <tr th:each="bill:${user.billList}">
+        <td th:text="${bill.money}"></td>
+        <td th:text="${bill.datetime}"></td>
+        <td th:text="${bill.remark}"></td>
+        <td th:text="类别还没加 "></td>
+    </tr>
+</table>
+</div>
+
+
+</body>
+</html>

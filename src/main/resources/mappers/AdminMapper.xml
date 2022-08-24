@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ykx.ykxfmis.dao.AdminDao">
+    <resultMap id="AdminMap" type="com.ykx.ykxfmis.entity.Admin">
+        <id property="id" column="a_id"></id>
+        <result property="username" column="a_username"></result>
+        <result property="password" column="a_password"></result>
+    </resultMap>
+    <select id="selectAll" parameterType="Integer" resultMap="AdminMap">
+         select * from t_admin
+    </select>
+
+
+</mapper>
