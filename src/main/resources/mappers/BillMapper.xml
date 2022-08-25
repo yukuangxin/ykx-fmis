@@ -4,16 +4,37 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ykx.ykxfmis.dao.BillDao">
-    <resultMap id="BillMap" type="com.ykx.ykxfmis.entity.Bill" >
+    <resultMap id="BillMap1" type="com.ykx.ykxfmis.entity.Bill">
         <id property="id" column="b_id"></id>
         <result property="money" column="b_money"></result>
         <result property="datetime" column="b_date"></result>
         <result property="remark" column="b_remark"></result>
         <result property="id" column="u_id"></result>
     </resultMap>
-<insert id="insertBillOne" parameterType="com.ykx.ykxfmis.entity.Bill" useGeneratedKeys="true" >
-    insert into t_bill(b_money,b_date,b_remark,u_id) values(#{money},#{datetime},#{remark},#{id})
-</insert>
+    <resultMap id="BillMap2" type="com.ykx.ykxfmis.entity.Bill">
+        <id property="id" column="b_id"></id>
+        <result property="money" column="b_money"></result>
+        <result property="datetime" column="b_date"></result>
+        <result property="remark" column="b_remark"></result>
+        <collection property="cateGory" ofType="com.ykx.ykxfmis.entity.CateGory">
+            <id property="id" column="c_id"></id>
+            <result property="name" column="c_name"></result>
+            <result property="type" column="c_type"></result>
+            <result property="budget" column="c_budget"></result>
+        </collection>
+    </resultMap>
+
+    <insert id="insertBillOne" useGeneratedKeys="true">
+        insert into t_bill(b_money,b_date,b_remark,u_id,c_id) values(#{bill.money},#{bill.datetime},#{bill.remark},#{uid},#{cid})
+    </insert>
+
+
+    <select id="selectAll" parameterType="Integer" resultMap="BillMap2">
+        select * from t_bill as b,t_category as c
+        <where>
+            b.c_id=c.c_id and b.u_id=#{id}
+        </where>
+    </select>
 
 
 </mapper>

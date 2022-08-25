@@ -14,14 +14,14 @@ public class BillServiceImpl implements BillService {
     private BillDao billDao;
 
     @Override
-    public List<Bill> findAll() {
-        List<Bill> bills = billDao.selectAll();
+    public List<Bill> findAll(Integer id) {
+        List<Bill> bills = billDao.selectAll(id);
         return bills;
     }
 
     @Override
-    public int registerNewBill(Bill bill) {
-        int i=billDao.insertBillOne(bill);
+    public int registerNewBill(Bill bill,Integer uid,Integer cid) {
+        int i=billDao.insertBillOne(bill,uid,cid);
         return i;
     }
 }

@@ -1,12 +1,17 @@
-package com.ykx.ykxfmis.controller; 
+package com.ykx.ykxfmis.controller;
+
+import com.ykx.ykxfmis.entity.Bill;
 import com.ykx.ykxfmis.entity.User;
+import com.ykx.ykxfmis.service.BillService;
 import com.ykx.ykxfmis.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 
 /**
@@ -18,6 +23,8 @@ import javax.servlet.http.HttpSession;
 public class UserController {
     @Resource
     private UserService userService;
+    @Resource
+    private BillService billService;
 
 
     //跳转登录
@@ -40,18 +47,18 @@ public class UserController {
 
     //登录功能
     @RequestMapping("/login")
-    public String login(User loginUser,HttpServletRequest request) {
+    public String login(User loginUser, HttpServletRequest request) {
         User user = new User();
         //更新
 
-        user = userService.loginUser(loginUser.getLoginName(),loginUser.getPassword());
+        user = userService.loginUser(loginUser.getLoginName(), loginUser.getPassword());
         if (user != null) {
             //创建session
-            HttpSession session=request.getSession();
+            HttpSession session = request.getSession();
             //将登录信息保存到session中
-            session.setAttribute("id",user.getId());
-            session.setAttribute("name",user.getName());
-            session.setAttribute("loginName",user.getLoginName());
+            session.setAttribute("id", user.getId());
+            session.setAttribute("name", user.getName());
+            session.setAttribute("loginName", user.getLoginName());
             return "welcome";
         } else {
             System.out.println("账号密码错误，请重新输入。");
@@ -59,9 +66,9 @@ public class UserController {
         }
 
 
-
     }
 
+    //注册新用户
     @RequestMapping("/register")
     public String register(User user) {
 
@@ -87,14 +94,12 @@ public class UserController {
 
     //查询所有明细
     @RequestMapping("/showAll")
-    public String showAll(Model model,HttpSession session) {
-        int id=(int)session.getAttribute("id");
+    public String showAll(Model model, HttpSession session) {
+        int id = (int) session.getAttribute("id");
         //查询用户下的所有bill明细;
-        User user = userService.showAllBill(id);
-        System.out.println(user.toString());
-        model.addAttribute("user", user);
+        List<Bill> bills = billService.findAll(id);
+        model.addAttribute("bills", bills);
         return "welcome";
-
     }
 
 

@@ -1,25 +1,26 @@
 package com.ykx.ykxfmis.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+
 import java.util.Date;
-@Entity
+
 public class Bill {
-    @Id
+
     private Integer id;
     private Double money;
     private Date datetime;
     private String remark;
+    private CateGory cateGory;
 
     public Bill() {
         super();
     }
 
-    public Bill(Integer id, Double money, Date date, String remark) {
+    public Bill(Integer id, Double money, Date datetime, String remark, CateGory cateGory) {
         this.id = id;
         this.money = money;
         this.datetime = datetime;
         this.remark = remark;
+        this.cateGory = cateGory;
     }
 
     public Integer getId() {
@@ -54,13 +55,22 @@ public class Bill {
         this.remark = remark;
     }
 
+    public CateGory getCateGory() {
+        return cateGory;
+    }
+
+    public void setCateGory(CateGory cateGory) {
+        this.cateGory = cateGory;
+    }
+
     @Override
     public String toString() {
         return "Bill{" +
                 "id=" + id +
-                ", money='" + money + '\'' +
-                ", date=" + datetime +
+                ", money=" + money +
+                ", datetime=" + datetime +
                 ", remark='" + remark + '\'' +
+                ", cateGory=" + cateGory +
                 '}';
     }
 }

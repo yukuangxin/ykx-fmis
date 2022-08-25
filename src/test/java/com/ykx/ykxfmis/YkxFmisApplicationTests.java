@@ -16,6 +16,7 @@ import org.springframework.test.context.TestPropertySource;
 import javax.annotation.Resource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootTest
@@ -91,9 +92,13 @@ class YkxFmisApplicationTests {
 
     @Test
     public void billServiceTest(){
-//        List<Bill> billList=billService.findAll();
-//
-//        System.out.println(billList.toString());
+        ArrayList arrayList=new ArrayList();
+        arrayList.add("2345");
+        arrayList.add("bill.getDatetime()");
+        arrayList.add(12);
+        arrayList.add(1);
+        arrayList.add(2);
+        System.out.println(arrayList.toString());
     }
     @Test
     public void  showAllBillTest(){
@@ -105,5 +110,6 @@ class YkxFmisApplicationTests {
     public void loginUserTest(){
         userService.loginUser("yu","111111");
     }
+
 
 }

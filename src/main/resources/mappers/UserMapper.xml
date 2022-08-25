@@ -27,6 +27,12 @@
             <result property="money" column="b_money"></result>
             <result property="datetime" column="b_date"></result>
             <result property="remark" column="b_remark"></result>
+            <collection property="cateGory" ofType="com.ykx.ykxfmis.entity.CateGory">
+                <id property="id" column="c_id"></id>
+                <result property="name" column="c_name"></result>
+                <result property="type" column="c_type"></result>
+                <result property="budget" column="c_budget"></result>
+            </collection>
         </collection>
     </resultMap>
 
